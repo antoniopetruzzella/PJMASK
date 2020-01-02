@@ -1,5 +1,7 @@
 {
   "name": "PJMask",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

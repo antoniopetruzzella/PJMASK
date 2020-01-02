@@ -1,14 +1,31 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      PJMASK LED STRIP
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    <ion-button shape="round" color="tertiary" (click)="scan()">CONNETTI</ion-button>
+    
   </div>
+  <div class="ion-padding">
+    <ion-label color="primary">{{Statusconnectionlabel}}</ion-label>
+  </div>
+    <ion-content *ngIf="Statusconnection">
+      <div class="ion-padding">
+        <ion-button shape="round" color="tertiary" (click)="setShow('1')">FISSO</ion-button>
+        <ion-button shape="round" color="tertiary" (click)="setShow('2')">PASSO PASSO</ion-button>
+        <ion-button shape="round" color="tertiary" (click)="setShow('3')">RIEMPI</ion-button>
+        <ion-button shape="round" color="tertiary" (click)="setShow('4')">SVUOTA</ion-button>
+        <ion-button shape="round" color="tertiary" (click)="setShow('8')">MAGIC!</ion-button>
+      </div>
+      <div class="ion-padding">
+        <ion-button shape="round" color="danger" (click)="setPjmask('0')">GUFETTA</ion-button>
+        <ion-button shape="round" color="success" (click)="setPjmask('1')">GECO</ion-button>
+        <ion-button shape="round" color="primary" (click)="setPjmask('2')">GATTOBOY</ion-button>
+      </div>
+  </ion-content>
 </ion-content>
