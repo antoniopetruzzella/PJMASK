@@ -27,5 +27,19 @@
         <ion-button shape="round" color="success" (click)="setPjmask('1')">GECO</ion-button>
         <ion-button shape="round" color="primary" (click)="setPjmask('2')">GATTOBOY</ion-button>
       </div>
+      <div>
+        <ion-list *ngIf="Showid=='1'">
+          <ion-item>LUMINOSITA'
+            <ion-range min="1" max="100" color="secondary" debounce=1000 [(ngModel)]="Brightness" (ionChange)="setBrightness()"></ion-range>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div>
+        <ion-list *ngIf="Showid!='1' && Showid!='0'">
+          <ion-item>VELOCITA'
+            <ion-range min="1" max="255" color="secondary" debounce=1000 [(ngModel)]="Speed" (ionChange)="setSpeed()"></ion-range>
+          </ion-item>
+        </ion-list>
+      </div>
   </ion-content>
 </ion-content>

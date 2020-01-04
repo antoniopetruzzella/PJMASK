@@ -120,6 +120,7 @@ export class HomePage {
     }
 
     setShow(value){
+      this.Showid=value;
       var byteArray=this.stringToBytes(value);
       this.ble.write("D7:84:E7:E2:87:68","19b10000-e8f2-537e-4f6c-d104768a1214",this.ShowCharacteristicUUID,byteArray).then(
         result=> {
@@ -137,13 +138,32 @@ export class HomePage {
         });
     }
 
-    stringToBytes(string) {
-      var array = new Uint8Array(string.length);
-      for (var i = 0, l = string.length; i < l; i++) {
-          array[i] = string.charCodeAt(i);
-       }
-       return array.buffer;
-   }
+    setSpeed(){
+
+      var byteArray=this.stringToBytes((256-parseInt(this.Speed)).toString());//il metodo ritorna un array buffer come richiesto da ble.write
+      this.ble.write("D7:84:E7:E2:87:68","19b10000-e8f2-537e-4f6c-d104768a1214",this.SpeedCharacteristicUUID,byteArray).then(
+        result=> {
+        }).catch(error=> {
+            alert(JSON.stringify(error));
+        });
+    }
+    setBrightness(){
+
+      var byteArray=this.stringToBytes(this.Brightness.toString());//il metodo ritorna un array buffer come richiesto da ble.write
+      this.ble.write("D7:84:E7:E2:87:68","19b10000-e8f2-537e-4f6c-d104768a1214",this.BrightnessCharacteristicUUID,byteArray).then(
+        result=> {
+        }).catch(error=> {
+            alert(JSON.stringify(error));
+        });
+    }
+    
+   stringToBytes(string) {
+    var array = new Uint8Array(1);//unsignedInt come nel codice Arduino PJMaskNanoBleSense
+    //for (var i = 0, l = string.length; i < l; i++) {
+        array[0] = parseInt(string);
+     //}
+     return array.buffer;//trasforma il typed array in array buffer
+ }
 }
 
 
